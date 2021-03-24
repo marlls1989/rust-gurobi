@@ -1,6 +1,7 @@
 [package]
 name = "gurobi"
 version = "0.3.4"
+edition = "2018"
 authors = ["Yusuke Sasaki <y_sasaki@nuem.nagoya-u.ac.jp>", "Alice Ryhl <alice@ryhl.io>"]
 description = "An unofficial Rust API for Gurobi optimizer"
 categories = ["algorithms", "api-bindings", "mathematics", "science"]

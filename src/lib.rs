@@ -75,8 +75,8 @@
 //! }
 //! ```
 
-#![cfg_attr(feature="clippy", feature(plugin))]
-#![cfg_attr(feature="clippy", plugin(clippy))]
+#![cfg_attr(feature = "clippy", feature(plugin))]
+#![cfg_attr(feature = "clippy", plugin(clippy))]
 #![allow(extend_from_slice)]
 #![allow(explicit_iter_loop)]
 
@@ -95,31 +95,29 @@ mod parameter;
 mod attribute;
 
 // re-exports
-pub use error::{Error, Result};
+pub use crate::error::{Error, Result};
 
-pub use env::Env;
+pub use crate::env::Env;
 
-pub use model::{Model, Var, Constr, QConstr, SOS, Proxy};
-pub use model::{VarType, ConstrSense, ModelSense, SOSType, Status, RelaxType};
-pub use model::callback::{Callback, Where};
-pub use model::VarType::*;
-pub use model::ConstrSense::*;
-pub use model::ModelSense::*;
-pub use model::SOSType::*;
-pub use model::RelaxType::*;
-pub use model::expr::{LinExpr, QuadExpr};
+pub use crate::model::callback::{Callback, Where};
+pub use crate::model::expr::{LinExpr, QuadExpr};
+pub use crate::model::ConstrSense::*;
+pub use crate::model::ModelSense::*;
+pub use crate::model::RelaxType::*;
+pub use crate::model::SOSType::*;
+pub use crate::model::VarType::*;
+pub use crate::model::{Constr, Model, Proxy, QConstr, Var, SOS};
+pub use crate::model::{ConstrSense, ModelSense, RelaxType, SOSType, Status, VarType};
 
-pub use attribute::exports as attr;
-pub use parameter::exports as param;
-
+pub use crate::attribute::exports as attr;
+pub use crate::parameter::exports as param;
 
 /// Large number used in C API
 pub const INFINITY: f64 = 1e100;
 
-
 /// Returns the version number of Gurobi
 pub fn version() -> (i32, i32, i32) {
-  let (mut major, mut minor, mut technical) = (0, 0, 0);
-  unsafe { ffi::GRBversion(&mut major, &mut minor, &mut technical) };
-  (major, minor, technical)
+    let (mut major, mut minor, mut technical) = (0, 0, 0);
+    unsafe { ffi::GRBversion(&mut major, &mut minor, &mut technical) };
+    (major, minor, technical)
 }
